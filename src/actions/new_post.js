@@ -1,13 +1,13 @@
 import axios from "axios";
-export const POST_INDEX = "post_index";
-
+export const NEW_POST = "new_post";
 const ROOT_URL = "http://reduxblog.herokuapp.com/api/posts";
 const API_KEY = "?key=lalala";
 const COMP_URL = ROOT_URL + API_KEY;
-export default function() {
-  const request = axios.get(COMP_URL);
+export default function(values, callback) {
+  const request = axios.post(COMP_URL, values).then(() => callback());
+
   return {
-    type: POST_INDEX,
+    type: NEW_POST,
     payload: request
   };
 }

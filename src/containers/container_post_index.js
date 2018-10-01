@@ -11,7 +11,7 @@ class PostIndex extends Component {
   listify(obj) {
     return (
       <li className="list-group-item" key={obj.id}>
-        {obj.id}
+        {obj.title}
       </li>
     );
   }

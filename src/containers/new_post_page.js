@@ -1,27 +1,37 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
+import sendNewPost from "../actions/new_post";
+import { connect } from "react-redux";
 
 class NewPostPage extends Component {
   renderField(Field) {
+    const {
+      meta: { touched, error }
+    } = Field;
+    const className = `form-control ${touched && error ? "is-invalid" : ""}`;
     // console.log(Field.input);
     if (Field.input.name === "content") {
       return (
-        <div>
-          <textarea {...Field.input} className="form-control" />
-          {Field.meta.touched ? Field.meta.error:""}
+        <div className="text-danger">
+          <textarea {...Field.input} className={className} />
+          {touched ? error : ""}
         </div>
       );
     }
     return (
-      <div>
-        <input {...Field.input} className="form-control" />
-        {Field.meta.touched && Field.meta.error}
+      <div className="text-danger">
+        <input {...Field.input} className={className} />
+        {touched && error}
       </div>
     );
   }
   onSubmit(values) {
     console.log(values);
+
+    this.props.sendNewPost(values, () => {
+      this.props.history.push("/");
+    });
   }
   render() {
     const handleSubmit = this.props.handleSubmit;
@@ -69,4 +79,9 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: "formForNewBlogPost"
-})(NewPostPage);
+})(
+  connect(
+    null,
+    { sendNewPost }
+  )(NewPostPage)
+);

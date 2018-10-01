@@ -8,15 +8,16 @@ import NewPostPage from "./containers/new_post_page";
 import promise from "redux-promise";
 import reducers from "./reducers";
 import registerServiceWorker from "./registerServiceWorker";
+import ShowPost from "./containers/show_post";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
-
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
         <Route exact path="/" component={PostIndex} />
         <Route path="/NewPostPage" component={NewPostPage} />
+        <Route path="/post/" component={ShowPost} />
       </div>
     </BrowserRouter>
   </Provider>,

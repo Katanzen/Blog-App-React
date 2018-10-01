@@ -1,9 +1,11 @@
-import { POST_INDEX } from "../actions/get_posts_index";
+import { POST_ID } from "../actions/get_post_with_id";
 
 export default function(state = {}, action) {
-  console.log(action.payload);
+  // console.log(action.type);
+  // console.log(action.payload);
+
   switch (action.type) {
-    case POST_INDEX:
+    case POST_ID:
       return action.payload;
 
     default:

@@ -6,7 +6,6 @@ const API_KEY = "?key=lalala";
 const COMP_URL = ROOT_URL + API_KEY;
 export default function() {
   const request = axios.get(COMP_URL);
-  console.log(request);
   return {
     type: POST_INDEX,
     payload: request

@@ -17,7 +17,7 @@ ReactDOM.render(
       <div>
         <Route exact path="/" component={PostIndex} />
         <Route path="/NewPostPage" component={NewPostPage} />
-        <Route path="/post/" component={ShowPost} />
+        <Route path="/post/:id" component={ShowPost} />
       </div>
     </BrowserRouter>
   </Provider>,

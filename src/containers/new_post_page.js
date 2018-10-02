@@ -10,7 +10,6 @@ class NewPostPage extends Component {
       meta: { touched, error }
     } = Field;
     const className = `form-control ${touched && error ? "is-invalid" : ""}`;
-    // console.log(Field.input);
     if (Field.input.name === "content") {
       return (
         <div className="text-danger">
@@ -27,8 +26,6 @@ class NewPostPage extends Component {
     );
   }
   onSubmit(values) {
-    console.log(values);
-
     this.props.sendNewPost(values, () => {
       this.props.history.push("/");
     });
@@ -46,7 +43,7 @@ class NewPostPage extends Component {
         </div>
         <div className="form-group">
           <label>Tags</label>
-          <Field name="tags" component={this.renderField} type="text" />
+          <Field name="categories" component={this.renderField} type="text" />
         </div>
         <div className="form-group">
           <label>Content</label>

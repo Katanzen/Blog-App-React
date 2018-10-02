@@ -14,20 +14,16 @@ class PostIndex extends Component {
     this.props.getPostHashMap();
   }
 
-  showPost(id) {
-    this.props.fetchPostAndShow(id, () =>
-      this.props.history.push("post/" + id)
-    );
-  }
   listify(obj) {
     return (
-      <li
-        onClick={() => this.showPost(obj.id)}
-        className="list-group-item"
-        key={obj.id}
-      >
-        {obj.title}
-      </li>
+      <Link key={obj.id} to={`/post/${obj.id}`}>
+        <li
+          // onClick={() => this.showPost(obj.id)}
+          className="list-group-item"
+        >
+          {obj.title}
+        </li>
+      </Link>
     );
   }
   render() {
